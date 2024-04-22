@@ -115,6 +115,7 @@ def generate_images(
         w = gen_utils.get_w_from_seed(G, batch_sz, device, truncation_psi, seed=seed,
                                       centroids_path=centroids_path, class_idx=class_idx)
         img = gen_utils.w_to_img(G, w, to_np=True)
+        np.save(f'{outdir}/seed{seed:04d}.npy', img)
         PIL.Image.fromarray(gen_utils.create_image_grid(img), 'RGB').save(f'{outdir}/seed{seed:04d}.png')
 
 
